@@ -2,7 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/appbar_home_screen.dart';
+import '../widgets/container_page_view.dart';
 import '../widgets/search_home_screen.dart';
+
+final List<ItemData> _listCategory = [
+  ItemData(iconData: Icons.density_large_outlined, title: 'General'),
+  ItemData(iconData: Icons.density_small, title: 'Dentist'),
+  ItemData(iconData: Icons.medical_information, title: 'Ortal'),
+  ItemData(iconData: Icons.abc, title: 'Nutritionist'),
+  ItemData(iconData: Icons.abc, title: 'Neurologist'),
+  ItemData(iconData: Icons.people, title: 'Pediatrician'),
+  ItemData(iconData: Icons.people_sharp, title: 'Radiologist'),
+  ItemData(iconData: Icons.more, title: 'More'),
+
+];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,50 +47,62 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           const SearchHomeScreen(),
+          const ContainerPageView(),
+          const SizedBox(height: 10),
           Container(
-              decoration: BoxDecoration(
-                // image: DecorationImage(image: AssetImage('images/bg.jpg'), fit: BoxFit.cover),
-                color: Colors.blue.shade300,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              width: MediaQuery.of(context).size.width * 0.91,
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 25,
-                    top: 30,
-                    child: Text(
-                      'Medical Checks!',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold),
-                    ),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const <Widget>[
+                      Text(
+                        'Doctor Speciality',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'See All',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  Positioned(
-                    left: 25,
-                    top: 75,
-                    child: Text(
-                      'Check your health condition regulary \n to minimize the incidence to disease in \n the future',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    left: 25,
-                    top: 135,
-                    child: Container(
-                    child: Center(child: Text('Check Now')),
-                    width: 100,
-                    height: 35,
-                    decoration: BoxDecoration( color: Colors.white, borderRadius: BorderRadius.circular(35)),
-                    
-                  ),
-                  )
-                ],
-              )),
+                ),
+                Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 400,
+                      height: 50,
+                      child: ListView.builder(
+                        itemCount: _listCategory.length,
+                        itemBuilder: (context, index) {
+                        return Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.blue.shade300,
+                          ),
+                          child: Icon(_listCategory[index].iconData),
+                        );
+                      })
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
+}
+
+class ItemData {
+  final IconData iconData;
+  final String title;
+
+  ItemData({required this.iconData,  required this.title});
 }
