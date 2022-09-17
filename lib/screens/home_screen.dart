@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/appbar_home_screen.dart';
 import '../widgets/container_page_view.dart';
+import '../widgets/menu_soeciality.dart';
 import '../widgets/search_home_screen.dart';
 
 final List<ItemData> _listCategory = [
@@ -45,60 +46,37 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: <Widget>[
+        children:  <Widget>[
           const SearchHomeScreen(),
           const ContainerPageView(),
           const SizedBox(height: 10),
-          Container(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(13.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const <Widget>[
-                      Text(
-                        'Doctor Speciality',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'See All',
-                        style: TextStyle(
-                            color: Colors.blue, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 400,
-                      height: 50,
-                      child: ListView.builder(
-                        itemCount: _listCategory.length,
-                        itemBuilder: (context, index) {
-                        return Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.blue.shade300,
-                          ),
-                          child: Icon(_listCategory[index].iconData),
-                        );
-                      })
-                      ),
-                  ],
-                ),
-              ],
+          const menuSpeciality(),
+          SizedBox(height: 10,),
+           Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.blue.shade300,
+              borderRadius: BorderRadius.circular(40),
             ),
-          ),
+            child: ListView.builder(
+              itemCount: _listCategory.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: <Widget>[
+                    Icon(_listCategory[index].iconData),
+                    Text(_listCategory[index].title),
+                  ],
+                );
+            })
+           ),
         ],
       ),
     );
   }
 }
+
+
 
 class ItemData {
   final IconData iconData;
