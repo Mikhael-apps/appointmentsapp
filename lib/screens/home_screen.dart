@@ -6,18 +6,9 @@ import '../widgets/appbar_home_screen.dart';
 import '../widgets/container_page_view.dart';
 import '../widgets/menu_soeciality.dart';
 import '../widgets/search_home_screen.dart';
+import '../widgets/speciality_icon_text.dart';
 
-final List<ItemData> _listCategory = [
-  ItemData(iconData: Icons.density_large_outlined, title: 'General'),
-  ItemData(iconData: Icons.density_small, title: 'Dentist'),
-  ItemData(iconData: Icons.medical_information, title: 'Ortal'),
-  ItemData(iconData: Icons.abc, title: 'Nutritionist'),
-  ItemData(iconData: Icons.abc, title: 'Neurologist'),
-  ItemData(iconData: Icons.people, title: 'Pediatrician'),
-  ItemData(iconData: Icons.people_sharp, title: 'Radiologist'),
-  ItemData(iconData: Icons.more, title: 'More'),
 
-];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -47,36 +38,36 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        children:  <Widget>[
+        children: <Widget>[
           const SearchHomeScreen(),
           const ContainerPageView(),
           const SizedBox(height: 10),
           const menuSpeciality(),
-          const SizedBox(height: 10,),
-           Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              color: Colors.blue.shade300,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: ListView.builder(
-              itemCount: _listCategory.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    Icon(_listCategory[index].iconData),
-                    Text(_listCategory[index].title),
-                    
-                  ],
-                );
-            })
-           ),
+          const SizedBox(
+            height: 10,
+          ),
+          specialityIconAndText(),
+              SizedBox(height: 10,),
+              menuSpeciality(),
         ],
       ),
     );
   }
 }
 
+
+
+
+ // child: ListView.builder(
+            //   itemCount: _listCategory.length,
+            //   itemBuilder: (context, index) {
+            //     return Column(
+            //       children: <Widget>[
+            //         Icon(_listCategory[index].iconData),
+            //         Text(_listCategory[index].title),
+                    
+            //       ],
+            //     );
+            // })
 
 
