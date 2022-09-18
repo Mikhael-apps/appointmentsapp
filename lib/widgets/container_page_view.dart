@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ContainerPageView extends StatelessWidget {
+
+final List<Widget> _listWidgets =  [
+ const firstPageView(),
+  const secondPageView(),
+];
+
+class ContainerPageView extends StatefulWidget {
   const ContainerPageView({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<ContainerPageView> createState() => _ContainerPageViewState();
+}
+
+class _ContainerPageViewState extends State<ContainerPageView> {
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,11 +27,16 @@ class ContainerPageView extends StatelessWidget {
         ),
         width: MediaQuery.of(context).size.width * 0.91,
         height: MediaQuery.of(context).size.height * 0.25,
-        child: PageView(
-          children: [
-            firstPageView(),
-            secondPageView(),
-          ],
+        child: PageView.builder(
+          // itemCount: _listWidgets.length,
+          itemBuilder: ((context, index) {
+            return _listWidgets[index];
+          }),
+          controller: _pageController,
+          // children:  [
+          //   firstPageView(),
+          //   secondPageView(),
+          // ],
         ),
         );
   }

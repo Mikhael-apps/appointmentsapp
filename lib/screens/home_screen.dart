@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../models/itemdata.dart';
 import '../widgets/appbar_home_screen.dart';
 import '../widgets/container_page_view.dart';
 import '../widgets/menu_soeciality.dart';
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
           const ContainerPageView(),
           const SizedBox(height: 10),
           const menuSpeciality(),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
            Container(
             width: 100,
             height: 100,
@@ -66,6 +67,7 @@ class HomeScreen extends StatelessWidget {
                   children: <Widget>[
                     Icon(_listCategory[index].iconData),
                     Text(_listCategory[index].title),
+                    
                   ],
                 );
             })
@@ -78,9 +80,3 @@ class HomeScreen extends StatelessWidget {
 
 
 
-class ItemData {
-  final IconData iconData;
-  final String title;
-
-  ItemData({required this.iconData,  required this.title});
-}
