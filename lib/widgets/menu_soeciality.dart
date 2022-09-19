@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 
 class menuSpeciality extends StatelessWidget {
+  final String label;
   const menuSpeciality({
-    Key? key,
+    Key? key, required this.label,
   }) : super(key: key);
 
   @override
@@ -15,13 +16,13 @@ class menuSpeciality extends StatelessWidget {
             padding: const EdgeInsets.all(13.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
+              children: <Widget>[
                 Text(
-                  'Doctor Speciality',
+                  label,
                   style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text(
+              const  Text(
                   'See All',
                   style: TextStyle(
                       color: Colors.blue, fontWeight: FontWeight.bold),

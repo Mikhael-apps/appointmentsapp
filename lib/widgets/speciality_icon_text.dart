@@ -39,7 +39,7 @@ class specialityIconAndText extends StatelessWidget {
                   )),
                   const SizedBox(height: 3,),
                   Text(_listCategory[index].title,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                   
                 ],

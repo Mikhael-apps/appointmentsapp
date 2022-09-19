@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../models/itembutton.dart';
 import '../models/itemdata.dart';
 import '../widgets/appbar_home_screen.dart';
 import '../widgets/container_page_view.dart';
@@ -8,6 +9,18 @@ import '../widgets/menu_soeciality.dart';
 import '../widgets/search_home_screen.dart';
 import '../widgets/speciality_icon_text.dart';
 
+
+final List<ItemButton> _listButtons = [
+  ItemButton(label: 'General'),
+  ItemButton(label: 'Dentist'),
+  ItemButton(label: 'Ortalist'),
+  ItemButton(label: 'Nurtitionist'),
+  ItemButton(label: 'Neurologist'),
+  ItemButton(label: 'Pediastrician'),
+  ItemButton(label: 'Radiologist'),
+  ItemButton(label: 'More'),
+
+];
 
 
 class HomeScreen extends StatelessWidget {
@@ -42,13 +55,38 @@ class HomeScreen extends StatelessWidget {
           const SearchHomeScreen(),
           const ContainerPageView(),
           const SizedBox(height: 10),
-          const menuSpeciality(),
-          const SizedBox(
+          const menuSpeciality(label: 'Doctor Speciality',),
+           const SizedBox(
             height: 10,
           ),
-          specialityIconAndText(),
-              SizedBox(height: 10,),
-              menuSpeciality(),
+         const specialityIconAndText(),
+             const SizedBox(height: 10,),
+             const menuSpeciality(label: 'Top Doctor',),
+              SizedBox(
+                height: MediaQuery.of(context).size.height *0.07,
+                child: GridView.count(
+                 
+                  crossAxisCount: 8,
+                  children: List.generate(8, (index) {
+                    return 
+                       Container(
+                        alignment: Alignment.center,
+                        width: 70,
+                        height: 70,
+                        child: Row(
+                          
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Text(_listButtons[index].label),
+                            ),
+                          ],
+                        ),
+                       );
+                    
+                  })
+                  ),
+              ),
         ],
       ),
     );
